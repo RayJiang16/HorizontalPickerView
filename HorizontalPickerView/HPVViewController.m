@@ -9,6 +9,8 @@
 #import "HPVViewController.h"
 #import "HorizontalPickerView.h"
 
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+
 @interface HPVViewController () <HorizontalPickerViewDelegate>
 @property (nonatomic, strong) HorizontalPickerView *hpv;
 @end
@@ -22,7 +24,7 @@
     }
     
     [self createButton];
-    _hpv = [[HorizontalPickerView alloc] initWithFrame:CGRectMake(0, 200, 320, 50) items:@[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"] isLoop:NO];
+    _hpv = [[HorizontalPickerView alloc] initWithFrame:CGRectMake(0, 200, kScreenWidth, 50) items:@[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"] isLoop:NO];
     _hpv.delegate = self;
     [self.view addSubview:_hpv];
 }

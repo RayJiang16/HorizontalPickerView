@@ -9,6 +9,8 @@
 #import "HPVHasLoopViewController.h"
 #import "HorizontalPickerView.h"
 
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+
 @interface HPVHasLoopViewController () <HorizontalPickerViewDelegate>
 @property (nonatomic, strong) HorizontalPickerView *hpv;
 @property (nonatomic, strong) UILabel *label;
@@ -26,11 +28,12 @@
     
     _year = 2017;
     _month = 1;
-    _label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 200, 50)];
+    _label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 50)];
+    _label.textAlignment = NSTextAlignmentCenter;
     _label.text = [NSString stringWithFormat:@"%ld-%ld", _year, _month];
     [self.view addSubview:self.label];
     
-    _hpv = [[HorizontalPickerView alloc] initWithFrame:CGRectMake(0, 200, 320, 50) items:@[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"] isLoop:YES];
+    _hpv = [[HorizontalPickerView alloc] initWithFrame:CGRectMake(0, 200, kScreenWidth, 50) items:@[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"] isLoop:YES];
     _hpv.delegate = self;
     [self.view addSubview:self.hpv];
 }
